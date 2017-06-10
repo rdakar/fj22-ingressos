@@ -3,6 +3,10 @@ package br.com.caelum.ingresso.model;
 import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,6 +28,9 @@ public class Sessao {
     private LocalTime horario;
     
     private BigDecimal preco;
+    
+    @OneToMany(mappedBy = "sessao", fetch = FetchType.EAGER)
+    private Set<Ingresso> ingressos = new HashSet<>();
     
     public Sessao() {
     	
@@ -74,5 +81,21 @@ public class Sessao {
 	
 	public BigDecimal getPreco() {
 		return preco;
+	}
+
+	public Set<Ingresso> getIngressos() {
+		return ingressos;
+	}
+
+	public void setIngressos(Set<Ingresso> ingressos) {
+		this.ingressos = ingressos;
+	}
+	
+	public Map<String, List<Lugar>> getMapaDeLugares() {
+		return sala.getMapaDeLugares();
+	}
+	
+	public boolean isOcupado(Lugar lugar) {
+		return ingressos.stream().map(Ingresso::getLugar).anyMatch(l -> l.equals(lugar));
 	}
 }

@@ -10,8 +10,10 @@ import org.junit.Test;
 
 import br.com.caelum.ingresso.model.Filme;
 import br.com.caelum.ingresso.model.Ingresso;
+import br.com.caelum.ingresso.model.Lugar;
 import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
+import br.com.caelum.ingresso.model.TipoDeIngresso;
 import br.com.caelum.ingresso.model.desconto.DescontoBanco;
 import br.com.caelum.ingresso.model.desconto.DescontoEstudante;
 import br.com.caelum.ingresso.model.desconto.SemDesconto;
@@ -23,7 +25,7 @@ public class DescontoTest {
 		Sala sala = new Sala("3D Emotion", BigDecimal.valueOf(20));
 		Filme filme = new Filme("Ninja Gaiden", Duration.ofMinutes(120), "Muita ação", BigDecimal.valueOf(10));
 		Sessao sessao = new Sessao(LocalTime.now(), filme, sala);
-		Ingresso ingresso = new Ingresso(sessao, new DescontoBanco());
+		Ingresso ingresso = new Ingresso(sessao, TipoDeIngresso.BANCO, new Lugar("A", 1));
 		assertEquals(BigDecimal.valueOf(21.0), ingresso.getPreco());
 	}
 	
@@ -32,7 +34,7 @@ public class DescontoTest {
 		Sala sala = new Sala("3D Emotion", BigDecimal.valueOf(20));
 		Filme filme = new Filme("Ninja Gaiden", Duration.ofMinutes(120), "Muita ação", BigDecimal.valueOf(10));
 		Sessao sessao = new Sessao(LocalTime.now(), filme, sala);
-		Ingresso ingresso = new Ingresso(sessao, new DescontoEstudante());
+		Ingresso ingresso = new Ingresso(sessao, TipoDeIngresso.ESTUDANTE, new Lugar("A", 1));
 		assertEquals(BigDecimal.valueOf(15), ingresso.getPreco());
 	}
 	
@@ -41,7 +43,7 @@ public class DescontoTest {
 		Sala sala = new Sala("3D Emotion", BigDecimal.valueOf(20));
 		Filme filme = new Filme("Ninja Gaiden", Duration.ofMinutes(120), "Muita ação", BigDecimal.valueOf(10));
 		Sessao sessao = new Sessao(LocalTime.now(), filme, sala);
-		Ingresso ingresso = new Ingresso(sessao, new SemDesconto());
+		Ingresso ingresso = new Ingresso(sessao, TipoDeIngresso.INTEIRO, new Lugar("A", 1));
 		assertEquals(BigDecimal.valueOf(30), ingresso.getPreco());
 	}
 }
