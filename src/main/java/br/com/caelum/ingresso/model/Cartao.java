@@ -5,7 +5,7 @@ import java.time.YearMonth;
 public class Cartao {
 
 	private String numero;
-	private int cvv;
+	private String cvv;
 	private YearMonth vencimento;
 	
 	public String getNumero() {
@@ -14,10 +14,10 @@ public class Cartao {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public int getCvv() {
+	public String getCvv() {
 		return cvv;
 	}
-	public void setCvv(int cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 	public YearMonth getVencimento() {
@@ -25,5 +25,13 @@ public class Cartao {
 	}
 	public void setVencimento(YearMonth vencimento) {
 		this.vencimento = vencimento;
+	}
+	
+	public Cartao() {
+		
+	}
+	
+	public boolean isValido() {
+		return vencimento.isAfter(YearMonth.now());
 	}
 }
