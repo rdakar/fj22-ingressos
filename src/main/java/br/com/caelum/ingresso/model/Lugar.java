@@ -95,4 +95,8 @@ public class Lugar {
         return true;
     }
 
+	@Override
+	public String toString() {
+		return "Lugar - fileira=" + fileira + ", posicao=" + posicao;
+	}
 }

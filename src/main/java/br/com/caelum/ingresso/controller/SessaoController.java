@@ -83,6 +83,9 @@ public class SessaoController {
 		model.addObject("carrinho", carrinho);
 		model.addObject("imagemCapa", imagemCapa.orElse(new ImagemCapa()));
 		model.addObject("tiposDeIngressos", TipoDeIngresso.values());
+		
+		System.out.println(sessao.getMapaDeLugares());
+		
 		return model;
 	}
 }
