@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
-@ImportResource("/WEB-INF/spring-context.xml")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
