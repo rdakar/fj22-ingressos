@@ -19,12 +19,12 @@
                     <td class="text-center">${sala.nome}</td>
                     <td class="text-center">${sala.preco}</td>
                     <td class="col-md-1">
-                        <a href="/sala/${sala.id}/sessoes/" class="btn btn-primary">
+                        <a href="/admin/sala/${sala.id}/sessoes/" class="btn btn-primary">
                             <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Sessões
                         </a>
                     </td>
                     <td class="col-md-1">
-                        <a href="/sala/${sala.id}/lugares/" class="btn btn-warning">
+                        <a href="/admin/sala/${sala.id}/lugares/" class="btn btn-warning">
                             <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Lugares
                         </a>
                     </td>
@@ -32,21 +32,21 @@
                         <a onclick="excluir(${sala.id})" class="btn btn-danger">Excluir</a>
                     </td>
                     <td>
-                        <a href="/sala/${sala.id}" class="btn btn-info">Alterar</a>
+                        <a href="/admin/sala/${sala.id}" class="btn btn-info">Alterar</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         <div class="col-md-6 col-md-offset-3">
-            <a href="/sala" class="btn btn-block btn-info">Novo</a>
+            <a href="/admin/sala" class="btn btn-block btn-info">Novo</a>
         </div>
 		</div>
         <script>
             function excluir(id) {
                 var url = window.location.href;
                 $.ajax({
-                    url: "/sala/" + id,
+                    url: "/admin/sala/" + id,
                     type: 'DELETE',
                     success: function (result) {
                         console.log(result);
