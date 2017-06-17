@@ -56,7 +56,7 @@ public class Ingresso {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-
+	
 	public Lugar getLugar() {
 		return lugar;
 	}
@@ -79,5 +79,9 @@ public class Ingresso {
 
 	public void setTipoDeIngresso(TipoDeIngresso tipoDeIngresso) {
 		this.tipoDeIngresso = tipoDeIngresso;
+	}
+	
+	public BigDecimal getPrecoComDesconto() {
+		return tipoDeIngresso.aplicaDesconto(preco);
 	}
 }
